@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'ChatMessage.dart';
 import 'String.dart';
+import 'Firebase.dart';
 
 class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin{
   final List<ChatMessage> _messages = <ChatMessage>[];
@@ -119,6 +120,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin{
     File? file = File(image!.path);
     _handleImageSubmitted(str, file);
   }
+  UploadMessage uploadMessage = UploadMessage();
 
   void _handleImageSubmitted(String str, File? file){
     if(file != null){
@@ -133,6 +135,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin{
       );
       setState(() {
         _messages.insert(0, msg);
+        uploadMessage.uploadImage(msg);
       });
       msg.aController.forward();
     }
@@ -152,6 +155,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin{
       );
       setState(() {
         _messages.insert(0, msg);
+        uploadMessage.uploadText(msg);
       });
       msg.aController.forward();
     }

@@ -27,8 +27,13 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  intl: ^0.17.0
   flutter:
     sdk: flutter
+  firebase_core: any
+  cloud_firestore: any
+  firebase_storage: any
+  firebase_auth: any
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -38,7 +43,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  image_picker: any
+  image_picker: "^0.8.4+3"
 
 flutter_icons:
   image_path: "android/app/src/main/res/drawable/apps_chat_icon.png"
